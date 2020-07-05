@@ -203,3 +203,8 @@ SET_SOURCE_FILES_PROPERTIES(${ELEMENTS_RESOURCE_FILES} PROPERTIES MACOSX_PACKAGE
 SET_SOURCE_FILES_PROPERTIES(${PROJECT_RESOURCE_FILES} PROPERTIES MACOSX_PACKAGE_LOCATION Resources/app/project) 
 target_include_directories(codedesigner PRIVATE .)
 target_link_libraries(codedesigner libwxsf interfaces projectbase)
+
+install(TARGETS codedesigner
+    BUNDLE DESTINATION . COMPONENT Runtime
+    RUNTIME DESTINATION bin COMPONENT Runtime
+)
