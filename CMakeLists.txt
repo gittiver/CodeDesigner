@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.13)
 
 if(POLICY CMP0048)
   cmake_policy(SET CMP0048 NEW)
@@ -8,12 +8,16 @@ if(POLICY CMP0043)
   cmake_policy(SET CMP0043 OLD)
 endif()
 
+if(POLICY CMP0076)
+  cmake_policy(SET CMP0076 NEW)
+endif()
+
 set(PARAM_VERSION_MAJOR 0)
 set(PARAM_VERSION_MINOR 0)
 set(PARAM_VERSION_PATCH 1)
 set(PARAM_VERSION ${PARAM_VERSION_MAJOR}.${PARAM_VERSION_MINOR}.${PARAM_VERSION_PATCH})
 
-project(codedesigner) # ${PARAM_VERSION})
+project(codedesigner VERSION ${PARAM_VERSION})
 
 include (${CMAKE_ROOT}/Modules/FindCxxTest.cmake)
 
