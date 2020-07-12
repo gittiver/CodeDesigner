@@ -79,5 +79,5 @@ Events.cpp
 
 add_library(projectbase ${projectbase_SOURCES})
 target_include_directories(projectbase PRIVATE .)
-target_link_libraries(projectbase interfaces libwxsf)
+target_link_libraries(projectbase interfaces wxsf)
 

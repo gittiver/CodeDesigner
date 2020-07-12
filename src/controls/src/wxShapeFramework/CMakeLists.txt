@@ -1,5 +1,5 @@
 
-set(LIB_libwxsf_SOURCES
+set(LIB_wxsf_SOURCES
 		ArrowBase.cpp
 		AutoLayout.cpp
 		BitmapShape.cpp
@@ -43,9 +43,9 @@ set(LIB_libwxsf_SOURCES
 		Thumbnail.cpp
 		wxxmlserializer/PropertyIO.cpp		wxxmlserializer/XmlSerializer.cpp
 )
-add_library(libwxsf ${LIB_libwxsf_SOURCES})
-target_include_directories(libwxsf
+add_library(wxsf ${LIB_wxsf_SOURCES})
+target_include_directories(wxsf
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../include 
   PRIVATE .
 )
-target_link_libraries(libwxsf ${wxWidgets_LIBRARIES})
+target_link_libraries(wxsf ${wxWidgets_LIBRARIES})

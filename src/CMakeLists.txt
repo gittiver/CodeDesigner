@@ -170,8 +170,8 @@ target_include_directories(interfaces INTERFACE .)
 
 # lib projectbase
 add_subdirectory(projectbase)
-
-#codedesigner target
+# plugins
+add_subdirectory(plugins)
 
 file(GLOB_RECURSE GUI_RESOURCE_FILES 
   LIST_DIRECTORIES false
@@ -197,12 +197,13 @@ set(RESOURCE_FILES
 )  
 message("resourcefiles:" ${RESOURCE_FILES})
 
+#codedesigner target
 add_executable(codedesigner WIN32 MACOSX_BUNDLE ${codedesigner_SOURCES} ${RESOURCE_FILES})
 SET_SOURCE_FILES_PROPERTIES(${GUI_RESOURCE_FILES} PROPERTIES MACOSX_PACKAGE_LOCATION Resources/app/gui) 
 SET_SOURCE_FILES_PROPERTIES(${ELEMENTS_RESOURCE_FILES} PROPERTIES MACOSX_PACKAGE_LOCATION Resources/app/elements) 
 SET_SOURCE_FILES_PROPERTIES(${PROJECT_RESOURCE_FILES} PROPERTIES MACOSX_PACKAGE_LOCATION Resources/app/project) 
 target_include_directories(codedesigner PRIVATE .)
-target_link_libraries(codedesigner libwxsf interfaces projectbase)
+target_link_libraries(codedesigner wxsf interfaces projectbase)
 
 install(TARGETS codedesigner
     BUNDLE DESTINATION . COMPONENT Runtime

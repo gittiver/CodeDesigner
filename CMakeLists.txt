@@ -67,7 +67,7 @@ include(${CMAKE_ROOT}/Modules/UsewxWidgets.cmake)
 # http://www.wxwidgets.org/manuals/2.8/wx_librarieslist.html
 
 # We need the Find package for wxWidgets to work
-find_package(wxWidgets REQUIRED core base xml aui propgrid stc)
+find_package(wxWidgets REQUIRED core base xml aui propgrid stc net)
 # adv aui)
 
 ##---------------------------------------------------
@@ -108,7 +108,6 @@ install(DIRECTORY include DESTINATION .
 #    DESTINATION include/${PROJECT_NAME} 
 #    COMPONENT devel)
 
-#include_directories()
 option(${PROJECT_NAME}_BUILD_DOC "Build documentation" ON)
 
 # check if Doxygen is installed
