@@ -93,6 +93,8 @@ wxColor wxAuiStepColour(const wxColor& c, int ialpha)
     return wxColour(r, g, b);
 }
 
+wxBitmap wxAuiBitmapFromBits(const unsigned char bits[], int w, int h, const wxColour& color);
+/*
 wxBitmap wxAuiBitmapFromBits(const unsigned char bits[], int w, int h, const wxColour& color)
 {
 	wxImage img = wxBitmap((const char*)bits, w, h).ConvertToImage();
@@ -101,7 +103,7 @@ wxBitmap wxAuiBitmapFromBits(const unsigned char bits[], int w, int h, const wxC
     img.SetMaskColour(123,123,123);
     return wxBitmap(img);
 }
-
+*/
 #if defined( __WXMAC__ )
  static const unsigned char close_bits[]={
      0xFF, 0xFF, 0xFF, 0xFF, 0x0F, 0xFE, 0x03, 0xF8, 0x01, 0xF0, 0x19, 0xF3,
@@ -145,7 +147,9 @@ udTabArt::udTabArt()
     m_tab_ctrl_height = 0;
 
 #if defined( __WXMAC__ ) && wxOSX_USE_COCOA_OR_CARBON
-    wxColor base_colour = wxColour( wxMacCreateCGColorFromHITheme(kThemeBrushToolbarBackground));
+    //    wxColor base_colour = wxColour( wxMacCreateCGColorFromHITheme(kThemeBrushToolbarBackground));
+    udSettings &Settings = wxGetApp().GetSettings();
+    wxColor base_colour = Settings.GetProperty(wxT("Background colour"))->AsColour();
 #else
 	udSettings &Settings = wxGetApp().GetSettings();
     wxColor base_colour = Settings.GetProperty(wxT("Background colour"))->AsColour();
