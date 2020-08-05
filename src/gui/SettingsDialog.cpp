@@ -15,7 +15,9 @@ END_EVENT_TABLE();
 
 // constructor and destructor ////////////////////////////////////////////////////////////////
 
-udSettingsDialog::udSettingsDialog(wxWindow *parent, udSettings& settings, const wxString& title) :  m_Settings( settings ), _SettingsDialog( parent )
+udSettingsDialog::udSettingsDialog(wxWindow *parent, udSettings& settings, const wxString& title)
+  : _SettingsDialog( parent )
+  , m_Settings( settings )
 {
 	SetTitle( title );
 	m_sRootName = wxT("Settings");
