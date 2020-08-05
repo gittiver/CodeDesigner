@@ -72,12 +72,9 @@ gui/UMLDesignerAUI.fbp
 gui/UpdateCodeDialog.cpp
 gui/ChoiceDialog.h
 Events.cpp
-
-
-
 )
 
-add_library(projectbase ${projectbase_SOURCES})
+add_library(projectbase SHARED ${projectbase_SOURCES})
 target_include_directories(projectbase PRIVATE .)
 target_link_libraries(projectbase interfaces wxsf)
 

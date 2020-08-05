@@ -30,7 +30,7 @@ cmake -D${PROJECTNAME}_WITH_DOCS:bool=ON \
       -DwxWidgets_CONFIG_EXECUTABLE:FILEPATH=$WXDIR/build-cocoa-debug/wx-config \
       ..
 
-cmake --build . --target all
+cmake --build . --parallel 8  --target all
 #cmake --build . --target test
 cmake --build . --target package 
 cmake --build . --target package_source

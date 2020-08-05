@@ -43,9 +43,10 @@ set(LIB_wxsf_SOURCES
 		Thumbnail.cpp
 		wxxmlserializer/PropertyIO.cpp		wxxmlserializer/XmlSerializer.cpp
 )
-add_library(wxsf ${LIB_wxsf_SOURCES})
+add_library(wxsf SHARED ${LIB_wxsf_SOURCES})
 target_include_directories(wxsf
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../../include 
   PRIVATE .
 )
+target_compile_definitions(wxsf PRIVATE WXMAKINGDLL_WXSF WXMAKINGDLL_WXXS MONOLITHIC)
 target_link_libraries(wxsf ${wxWidgets_LIBRARIES})

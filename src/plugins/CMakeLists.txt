@@ -1,8 +1,10 @@
 add_library(CodeLite SHARED codelite/CodeLite.cpp codelite/CodeLite.h)
-target_link_libraries(CodeLite interfaces wxsf projectbase) 
+target_link_libraries(CodeLite PRIVATE projectbase)
+target_compile_definitions(CodeLite PRIVATE WXMAKINGDLL_CD)
 
 add_library(DiagTest SHARED diagTest/DiagTest.cpp diagTest/DiagTest.h)
-target_link_libraries(DiagTest interfaces wxsf projectbase) 
+target_link_libraries(DiagTest PRIVATE projectbase)
+target_compile_definitions(DiagTest PRIVATE WXMAKINGDLL_CD)
 
 set(diagUML_res 
 diagUml/res/SubSign.xpm
@@ -118,9 +120,13 @@ diagUml/DiagUml.h
 diagUml/DiagIds.h
 diagUml/DiagEvtHandlers.cpp
 )
-target_link_libraries(diagUml interfaces wxsf projectbase)
+target_link_libraries(diagUml PRIVATE projectbase)
+target_compile_definitions(diagUml PRIVATE WXMAKINGDLL_CD)
+set_target_properties(diagUml PROPERTIES
+  FRAMEWORK TRUE
+  FRAMEWORK_VERSION C)
 
-add_library(genUml SHARED 
+add_library(genUml SHARED
 genUml/classdiaggen/CPPClassAlgorithm.h
 genUml/classdiaggen/CPPElementProcessors.h
 genUml/classdiaggen/ClassDiagramGenerator.cpp
@@ -164,21 +170,22 @@ genUml/statechartgen/HStateChartGenerator.h
 genUml/statechartgen/GTElementProcessors.cpp
 genUml/GenUml.cpp
 )
-target_link_libraries(genUml interfaces wxsf projectbase diagUml) 
+target_link_libraries(genUml PRIVATE projectbase diagUml)
+target_compile_definitions(genUml PRIVATE WXMAKINGDLL_CD)
 
 add_library(revEng SHARED 
 	revEng/RevEng.cpp revEng/RevEng.h
 	revEng/gui/RevEngGUI.fbp
-	revEng/gui/RevEngPanelFcns.cpp
+	revEng/gui/RevEngPanelFcns.cpp 
 	revEng/gui/RevEngPanel.cpp
 	revEng/gui/GUI.h
 	revEng/gui/GUI.cpp
 	revEng/gui/RevEngPanel.h
 	revEng/RevEng.h
 )
-target_link_libraries(revEng interfaces wxsf projectbase diagUml)
+target_link_libraries(revEng PRIVATE projectbase diagUml)
 target_include_directories(revEng
   PRIVATE revEng .
 )
-
+target_compile_definitions(revEng PRIVATE WXMAKINGDLL_CD)
 
